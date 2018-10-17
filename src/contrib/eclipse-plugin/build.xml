@@ -66,7 +66,7 @@
   </target>
 
   <!-- target name="compile" depends="init, ivy-retrieve-common" unless="skip.contrib" -->
- <target name="compile" unless="skip.contrib">
+ <target name="compile" depends="init" unless="skip.contrib">
     <echo message="contrib: ${name}"/>
     <javac
      encoding="${build.encoding}"
@@ -117,18 +117,18 @@
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar"  todir="${build.dir}/lib" verbose="true"/>  
     <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/httpclient-${httpclient.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core4-${htrace.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core4-${htrace.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/woodstox-core-${woodstox.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/stax2-api-${stax2.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
 
     <jar
       jarfile="${build.dir}/hadoop-${name}-${hadoop.version}.jar"
@@ -136,7 +136,7 @@
       <manifest>
    <attribute name="Bundle-ClassPath" 
     value="classes/, 
- lib/commons-hdfs-client-${hadoop.version}.jar,
+ lib/hadoop-hdfs-client-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
@@ -147,18 +147,18 @@
  lib/log4j-${log4j.version}.jar,
  lib/commons-cli-${commons-cli.version}.jar,
  lib/commons-configuration-${commons-configuration.version}.jar,
- lib/commons-httpclient-${commons-httpclient.version}.jar,
  lib/commons-lang-${commons-lang.version}.jar,  
  lib/commons-collections-${commons-collections.version}.jar,  
- lib/commons-io-${commons-io.version}.jar,
  lib/jackson-core-asl-${jackson.version}.jar,
  lib/jackson-mapper-asl-${jackson.version}.jar,
+ lib/httpclient-${httpclient.version}.jar,
  lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
  lib/slf4j-api-${slf4j-api.version}.jar,
  lib/guava-${guava.version}.jar,
  lib/netty-${netty.version}.jar,
- lin/servlet-api-${servlet-api.version}.jar
- lib/htrace-core4-${htrace.version}-incubating.jar"/>
+ lib/servlet-api-${servlet-api.version}.jar,
+ lib/htrace-core4-${htrace.version}-incubating.jar,
+ lib/commons-io-${commons-io.version}.jar"/>
    </manifest>
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
       <!--fileset dir="${build.dir}" includes="*.xml"/-->

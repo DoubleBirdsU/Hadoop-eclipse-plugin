@@ -66,7 +66,7 @@
   </target>
 
   <!-- target name="compile" depends="init, ivy-retrieve-common" unless="skip.contrib" -->
- <target name="compile" unless="skip.contrib">
+ <target name="compile" depends="init" unless="skip.contrib">
     <echo message="contrib: ${name}"/>
     <javac
      encoding="${build.encoding}"

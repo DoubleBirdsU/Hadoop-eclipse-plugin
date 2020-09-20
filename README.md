@@ -4,10 +4,6 @@
 
 在Windows下，编译时，需要安装 Ant，eclipse
 
-@[TOC](编译 hadoop-eclipse-plugins-2.8.5.jar 文件)
-
-不想自己编译可以到 [hadoop-eclipse-plugin](https://github.com/DoubleBirdsU/Hadoop-eclipse-plugin) 下载 **`hadoop-eclipse-plugin-2.8.5.jar`** 。
-
 # 1、编译准备
 
 编译之前首先需要安装 Ant 及 配置环境。
